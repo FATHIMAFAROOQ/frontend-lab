@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background-color: lightblue;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Information</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>Current Weather Information</h1>
+
+    <div id="weatherInfo">
+        <p>Loading...</p>
+    </div>
+    <script>
+        const apiKey = 'bd5e378503939ddaee76f12ad7a97608';
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=pallavaram&appid=${apiKey}&units=metric`;
+        const weatherInfo = document.getElementById('weatherInfo');
+        function getWeather() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const { main, weather } = data;
+                    const temperature = main.temp;
+                    const description = weather[0].description;
+                    weatherInfo.innerHTML = `<p>Temperature: ${temperature} &deg;C</p><p>Description: ${description}</p>`;
+                })
+                .catch(error => {
+                    weatherInfo.textContent = 'Failed to fetch weather data';
+                    console.error('Error:', error);
+                });
+        }
+        getWeather();
+
+    </script>
+</body>
+
+</html>

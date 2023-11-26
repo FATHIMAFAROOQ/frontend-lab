@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Controllers and Templates</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            background-color: rgb(117, 213, 109);
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="MyController">
+        <h1>{{ title }}</h1>
+        <h2>{{ titlee }}</h2>
+        <ul>
+            <li ng-repeat="item in items">{{ item.name }} - {{ item.price }}</li>
+        </ul>
+    </div>
+</body>
+
+</html>
